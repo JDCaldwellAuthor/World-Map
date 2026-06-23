@@ -149,7 +149,51 @@
         </map>
     </div>
 </div>
+<script>
+// Resizes and recalibrates polygon coordinates relative to current viewport sizing
+function resizeImageMap() {
+    const img = document.querySelector('img[usemap]');
+    if (!img) return;
 
+    // IMPORTANT: Swap out 4000 and 2500 below with your base image dimensions if different
+    const originalWidth = img.getAttribute('width') || 4000;
+    const originalHeight = img.getAttribute('height') || 2500;
+    
+    const currentWidth = img.clientWidth;
+    const currentHeight = img.clientHeight;
+
+    const scaleX = currentWidth / originalWidth;
+    const scaleY = currentHeight / originalHeight;
+
+    const areas = document.querySelectorAll('area');
+    areas.forEach(area => {
+        const dataCoordsAttr = area.getAttribute('data-coords');
+        if (!dataCoordsAttr) return;
+
+        const originalCoords = dataCoordsAttr.split(',');
+        const newCoords = [];
+
+        for (let i = 0; i < originalCoords.length; i++) {
+            if (i % 2 === 0) {
+                newCoords.push(Math.round(originalCoords[i] * scaleX));
+            } else {
+                newCoords.push(Math.round(originalCoords[i] * scaleY));
+            }
+        }
+        area.setAttribute('coords', newCoords.join(','));
+    });
+}
+
+// Global listeners to execute coordinate adjustments on resizing or canvas loads
+window.addEventListener('resize', resizeImageMap);
+window.addEventListener('DOMContentLoaded', () => {
+    const img = document.querySelector('img[usemap]');
+    if (img) {
+        if (img.complete) resizeImageMap();
+        else img.addEventListener('load', resizeImageMap);
+    }
+});
+</script>
     <!-- The Dynamic Audio & Info Panel -->
     <div id="info-panel">
         <h3 id="region-name">Select a Region</h3>
