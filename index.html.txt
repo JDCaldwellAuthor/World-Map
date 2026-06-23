@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive World Map & Music Player</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: #d4af37; /* Metallic Gold */
+            margin-bottom: 5px;
+        }
+        .map-outer-wrapper {
+            max-width: 1000px; /* Limits max site width */
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .map-container {
+            position: relative;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            border: 3px solid #8c6d31;
+            border-radius: 4px;
+            overflow: hidden;
+            width: 100%;
+        }
+        .map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Hotspot Styles */
+        .hotspot {
+            position: absolute;
+            transform: translate(-50%, -50%); /* Centers the point on the coordinate */
+            width: 4%; /* Scales dynamically with the map width */
+            padding-bottom: 4%; /* Forces a perfect circle */
+            background: rgba(212, 175, 55, 0.4); /* Translucent Gold */
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .hotspot:hover {
+            background: rgba(212, 175, 55, 0.8);
+            box-shadow: 0 0 15px #d4af37;
+            scale: 1.1;
+        }
+        /* Info Panel */
+        #info-panel {
+            margin: 20px auto;
+            padding: 20px;
+            background: #1e1e1e;
+            border: 1px solid #8c6d31;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        #region-name {
+            color: #d4af37;
+            margin-top: 0;
+        }
+        audio {
+            margin-top: 15px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Explore the Realm</h1>
+    <p>Tap a glowing region to read its history and listen to its ancient theme music.</p>
+
+    <div class="map-outer-wrapper">
+        <div class="map-container">
+            <!-- Replace 'world-map.jpg' with your actual map file name -->
+            <img src="world-map.jpg" alt="Trilogy World Map">
+            
+            <!-- Region 1 -->
+            <div class="hotspot" style="top: 20%; left: 15%;" 
+                 onclick="playRegion('Region One Name', 'audio/track1.mp3', 'Lore description for region one.')">
+            </div>
+            
+            <!-- Region 2 -->
+            <div class="hotspot" style="top: 45%; left: 30%;" 
+                 onclick="playRegion('Region Two Name', 'audio/track2.mp3', 'Lore description for region two.')">
+            </div>
+            
+            <!-- Region 3 -->
+            <div class="hotspot" style="top: 25%; left: 70%;" 
+                 onclick="playRegion('Region Three Name', 'audio/track3.mp3', 'Lore description for region three.')">
+            </div>
+
+            <!-- Region 4 -->
+            <div class="hotspot" style="top: 60%; left: 50%;" 
+                 onclick="playRegion('Region Four Name', 'audio/track4.mp3', 'Lore description for region four.')">
+            </div>
+
+            <!-- Region 5 -->
+            <div class="hotspot" style="top: 75%; left: 20%;" 
+                 onclick="playRegion('Region Five Name', 'audio/track5.mp3', 'Lore description for region five.')">
+            </div>
+
+            <!-- Region 6 -->
+            <div class="hotspot" style="top: 15%; left: 85%;" 
+                 onclick="playRegion('Region Six Name', 'audio/track1.mp3', 'Lore description for region six.')">
+            </div>
+
+            <!-- Region 7 -->
+            <div class="hotspot" style="top: 80%; left: 75%;" 
+                 onclick="playRegion('Region Seven Name', 'audio/track2.mp3', 'Lore description for region seven.')">
+            </div>
+        </div>
+    </div>
+
+    <!-- The Dynamic Audio & Info Panel -->
+    <div id="info-panel">
+        <h3 id="region-name">Select a Region</h3>
+        <p id="region-description">Click a location on the map to begin your journey.</p>
+        <audio id="map-audio" controls loop>
+            <source id="audio-source" src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        function playRegion(name, audioPath, description) {
+            // Update text elements
+            document.getElementById('region-name').innerText = name;
+            document.getElementById('region-description').innerText = description;
+            
+            // Get audio elements
+            const audioPlayer = document.getElementById('map-audio');
+            const audioSource = document.getElementById('audio-source');
+            
+            // Swap audio source path
+            audioSource.src = audioPath;
+            
+            // Reload and play tracking
+            audioPlayer.load();
+            audioPlayer.play().catch(function(error) {
+                console.log("Autoplay blocked by browser. User must click play manually.");
+            });
+        }
+    </script>
+</body>
+</html>
