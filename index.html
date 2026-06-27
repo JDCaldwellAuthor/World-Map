@@ -18,6 +18,12 @@
             color: #d4af37; /* Metallic Gold */
             margin-bottom: 5px;
         }
+        h2 {
+            color: #d4af37;
+        }
+        h3 {
+            color: #d4af37;
+        }
         .map-outer-wrapper {
             max-width: 1000px; /* Limits max site width */
             margin: 20px auto;
@@ -97,6 +103,137 @@
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
             transform: translateY(-2px);
         }
+
+        /* Prelude to Shadow Section */
+        .prelude-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+
+        /* Expandable Section Buttons */
+        .section-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .section-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #d4af37, #8c6d31);
+            color: #121212;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+        }
+
+        .section-btn:hover {
+            background: linear-gradient(135deg, #8c6d31, #d4af37);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Expandable Content Sections */
+        .section-content {
+            display: none;
+            background: #1e1e1e;
+            border: 1px solid #8c6d31;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        /* Items Grid */
+        .items-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .item {
+            flex: 0 1 280px;
+            background: #121212;
+            border: 1px solid #8c6d31;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .item h4 {
+            color: #d4af37;
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .item-image {
+            width: 100%;
+            height: 200px;
+            background: #2a2a2a;
+            border: 1px dashed #8c6d31;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8c6d31;
+            font-size: 12px;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .item-description {
+            color: #e0e0e0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Language Items (2 per row) */
+        .items-grid.languages {
+            gap: 30px;
+        }
+
+        .items-grid.languages .item {
+            flex: 0 1 350px;
+        }
+
+        @media (max-width: 768px) {
+            .items-grid {
+                gap: 20px;
+            }
+
+            .item {
+                flex: 0 1 100%;
+            }
+
+            .section-buttons {
+                gap: 10px;
+            }
+
+            .section-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -157,7 +294,121 @@
 
     <!-- Begin the Journey Button -->
     <div class="journey-button">
-        <a href="PreludetoShadow.jdcaldwellauthor.com">Begin the Journey</a>
+        <a href="https://preludetoShadow.jdcaldwellauthor.com">Begin the Journey</a>
+    </div>
+
+    <!-- Prelude to Shadow Section (Only show when subdomain loaded) -->
+    <div class="prelude-container" id="prelude-section" style="display: none;">
+        <h2>Prelude to Shadow</h2>
+        
+        <!-- Section Buttons -->
+        <div class="section-buttons">
+            <button class="section-btn" onclick="toggleSection('characters')">Characters</button>
+            <button class="section-btn" onclick="toggleSection('lore')">Lore</button>
+            <button class="section-btn" onclick="toggleSection('languages')">Languages</button>
+        </div>
+
+        <!-- Characters Section -->
+        <div id="characters" class="section-content">
+            <h3>Characters</h3>
+            <div class="items-grid">
+                <!-- Michael Shophaet -->
+                <div class="item">
+                    <h4>Michael Shophaet</h4>
+                    <div class="item-image">
+                        <img src="" alt="Michael Shophaet" style="display: none;">
+                        <span>Add character image</span>
+                    </div>
+                    <div class="item-description">
+                        Add character description here.
+                    </div>
+                </div>
+
+                <!-- Kaila Keruah -->
+                <div class="item">
+                    <h4>Kaila Keruah</h4>
+                    <div class="item-image">
+                        <img src="" alt="Kaila Keruah" style="display: none;">
+                        <span>Add character image</span>
+                    </div>
+                    <div class="item-description">
+                        Add character description here.
+                    </div>
+                </div>
+
+                <!-- Jaakob Keruah -->
+                <div class="item">
+                    <h4>Jaakob Keruah</h4>
+                    <div class="item-image">
+                        <img src="" alt="Jaakob Keruah" style="display: none;">
+                        <span>Add character image</span>
+                    </div>
+                    <div class="item-description">
+                        Add character description here.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lore Section -->
+        <div id="lore" class="section-content">
+            <h3>Lore</h3>
+            <div class="items-grid">
+                <!-- Founders of Ionia -->
+                <div class="item">
+                    <h4>Founders of Ionia</h4>
+                    <div class="item-description">
+                        Add lore description here.
+                    </div>
+                </div>
+
+                <!-- The Forest of Doria -->
+                <div class="item">
+                    <h4>The Forest of Doria</h4>
+                    <div class="item-description">
+                        Add lore description here.
+                    </div>
+                </div>
+
+                <!-- The Phrygian Mountains -->
+                <div class="item">
+                    <h4>The Phrygian Mountains</h4>
+                    <div class="item-description">
+                        Add lore description here.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Languages Section -->
+        <div id="languages" class="section-content">
+            <h3>Languages</h3>
+            <div class="items-grid languages">
+                <!-- Phrygian -->
+                <div class="item">
+                    <h4>Phrygian</h4>
+                    <div class="item-image">
+                        <img src="" alt="Phrygian" style="display: none;">
+                        <span>Add language image</span>
+                    </div>
+                    <div class="item-description">
+                        Add language description here.
+                    </div>
+                </div>
+
+                <!-- Locrian -->
+                <div class="item">
+                    <h4>Locrian</h4>
+                    <div class="item-image">
+                        <img src="" alt="Locrian" style="display: none;">
+                        <span>Add language image</span>
+                    </div>
+                    <div class="item-description">
+                        Add language description here.
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -179,6 +430,28 @@
                 console.log("Autoplay blocked by browser. User must click play manually.");
             });
         }
+
+        // Toggle section visibility
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            
+            // Close all other sections
+            document.querySelectorAll('.section-content').forEach(content => {
+                if (content.id !== sectionId) {
+                    content.classList.remove('active');
+                }
+            });
+
+            // Toggle current section
+            section.classList.toggle('active');
+        }
+
+        // Show prelude section if on subdomain
+        window.addEventListener('DOMContentLoaded', function() {
+            if (window.location.hostname.includes('preludetoShadow') || window.location.hostname.includes('prelude')) {
+                document.getElementById('prelude-section').style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>
