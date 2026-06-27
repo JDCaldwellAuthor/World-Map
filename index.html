@@ -72,6 +72,28 @@
             margin-top: 15px;
             width: 100%;
         }
+        /* Begin the Journey Button */
+        .journey-button {
+            margin-top: 20px;
+        }
+        .journey-button a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #d4af37, #8c6d31);
+            color: #121212;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .journey-button a:hover {
+            background: linear-gradient(135deg, #8c6d31, #d4af37);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -128,6 +150,11 @@
             <source id="audio-source" src="" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
+        
+        <!-- Begin the Journey Button -->
+        <div class="journey-button">
+            <a href="https://subdomain.yourdomain.com">Begin the Journey</a>
+        </div>
     </div>
 
     <script>
