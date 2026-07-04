@@ -27,9 +27,9 @@
 
         /* Navigation (hamburger) */
         .nav-toggle {
-            position: fixed;
+            position: absolute;
             top: 18px;
-            left: 18px;
+            right: 18px;
             width: 44px;
             height: 44px;
             background: linear-gradient(135deg, #d4af37, #8c6d31);
@@ -63,9 +63,9 @@
         .nav-toggle .bar:after { top: 6px; }
 
         .nav-menu {
-            position: fixed;
+            position: absolute;
             top: 70px;
-            left: 18px;
+            right: 18px;
             background: #1e1e1e;
             border: 1px solid #8c6d31;
             border-radius: 8px;
@@ -116,6 +116,7 @@
 
         /* Prelude to Shadow Section */
         .prelude-container {
+            position: relative;
             max-width: 1000px;
             margin: 40px auto;
             padding: 0 15px;
@@ -249,21 +250,23 @@
                 font-size: 14px;
             }
 
-            .nav-menu { left: 12px; top: 68px; min-width: 160px; }
-            .nav-toggle { top: 12px; left: 12px; }
+            .nav-menu { right: 12px; top: 68px; min-width: 160px; }
+            .nav-toggle { top: 12px; right: 12px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation (hamburger) -->
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
-        <span class="bar"></span>
-    </button>
-    <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
-        <a href="/About/">About</a>
-        <a href="/PreludetoShadow/">Prelude to Shadow</a>
-        <a href="/">Home</a>
-    </nav>
+    <div class="prelude-container">
+        <!-- Navigation (hamburger) -->
+        <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+            <span class="bar"></span>
+        </button>
+        <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
+            <a href="/About/">About</a>
+            <a href="/PreludetoShadow/">Prelude to Shadow</a>
+            <a href="/">Home</a>
+        </nav>
+    </div>
 
     <!-- Back to Map Button -->
     <div class="back-button">
@@ -344,7 +347,7 @@
                         <img src="Founders.jpg" alt="The Founders of Ionia">
                     </div>
                     <div class="item-description">
-                        A king and queen come over from beyond the mountains.  No one knows the reason for their journey.  It is they, upon finding Ionia, who found the nation and its three great citi[...]
+                        A king and queen come over from beyond the mountains.  No one knows the reason for their journey.  It is they, upon finding Ionia, who found the nation and its three great[...]
                     </div>
                 </div>
 
