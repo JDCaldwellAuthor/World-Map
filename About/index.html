@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About</title>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="135b7937-b7d0-424c-8c2d-8b0a59e43490"></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Georgia', serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 { color: #d4af37; margin-bottom: 10px; }
+    .container { max-width: 900px; margin: 40px auto; padding: 0 15px; }
+    /* Navigation (hamburger) */
+    .nav-toggle {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg,#d4af37,#8c6d31);
+      border: 2px solid #d4af37;
+      border-radius: 8px;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;z-index:1000;box-shadow:0 4px 15px rgba(212,175,55,0.3);
+    }
+    .nav-toggle .bar { width:20px; height:2px; background:#121212; position:relative; display:block;}
+    .nav-toggle .bar:before, .nav-toggle .bar:after { content:""; position:absolute; left:0; width:20px; height:2px; background:#121212; }
+    .nav-toggle .bar:before { top:-6px; } .nav-toggle .bar:after { top:6px; }
+    .nav-menu {
+      position: fixed; top: 70px; left: 18px;
+      background:#1e1e1e; border:1px solid #8c6d31; border-radius:8px;
+      padding:10px 0; min-width:200px; box-shadow:0 8px 30px rgba(0,0,0,0.6);
+      display:none; z-index:999;
+    }
+    .nav-menu.active { display:block; }
+    .nav-menu a { display:block; padding:12px 18px; color:#e0e0e0; text-decoration:none; text-align:left; font-weight:bold; border-left:4px solid transparent; }
+    .nav-menu a:hover { background: rgba(212,175,55,0.06); border-left-color:#d4af37; }
+    /* About content */
+    .author-card {
+      background:#1e1e1e; border:1px solid #8c6d31; border-radius:8px; padding:30px; box-shadow:0 4px 15px rgba(0,0,0,0.5);
+      display:flex; gap:30px; align-items:center; justify-content:center; flex-wrap:wrap;
+    }
+    .author-image {
+      width:260px; height:260px; background:#2a2a2a; border-radius:6px; border:1px dashed #8c6d31;
+      display:flex; align-items:center; justify-content:center; overflow:hidden;
+    }
+    .author-image img { width:100%; height:100%; object-fit:cover; display:block; }
+    .author-bio {
+      max-width:520px; text-align:left; color:#e0e0e0; line-height:1.6; font-size:15px;
+    }
+    @media (max-width:768px) {
+      .nav-menu { left:12px; top:68px; min-width:160px; }
+      .nav-toggle { top:12px; left:12px; }
+      .author-card { padding:20px; gap:16px; }
+      .author-image { width:100%; height:320px; }
+      .author-bio { text-align:left; width:100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation (hamburger) -->
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+    <span class="bar"></span>
+  </button>
+  <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
+    <a href="https://JDCaldwellAuthor.com/About">About</a>
+    <a href="https://JDCaldwellAuthor.com/PreludetoShadow">Prelude to Shadow</a>
+    <a href="https://JDCaldwellAuthor.com">Home</a>
+  </nav>
+
+  <div class="container">
+    <h1>About</h1>
+
+    <div class="author-card" role="region" aria-label="About the author">
+      <div class="author-image" aria-hidden="false">
+        <img src="authorpicture.jpg" alt="Author picture">
+      </div>
+
+      <div class="author-bio">
+        <p><strong>[Author Name]</strong></p>
+        <p>Place your author bio here. This area is a place to describe the author — background, influences, and any links or contact information you want shown. Replace this placeholder text with your final copy.</p>
+        <p>You can include multiple paragraphs, links, or simple markup. If you want me to populate this with specific biographical text, paste it here and I'll update the file before committing.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Navigation toggle logic (same behavior as Prelude page)
+    (function() {
+      const navToggle = document.getElementById('navToggle');
+      const navMenu = document.getElementById('navMenu');
+
+      function openNav() {
+        navMenu.classList.add('active');
+        navToggle.setAttribute('aria-expanded','true');
+        navMenu.setAttribute('aria-hidden','false');
+      }
+      function closeNav() {
+        navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded','false');
+        navMenu.setAttribute('aria-hidden','true');
+      }
+
+      navToggle.addEventListener('click', function(e){
+        e.stopPropagation();
+        if (navMenu.classList.contains('active')) closeNav(); else openNav();
+      });
+
+      document.addEventListener('click', function(e){
+        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) closeNav();
+      });
+
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') closeNav();
+      });
+    })();
+  </script>
+</body>
+</html>
