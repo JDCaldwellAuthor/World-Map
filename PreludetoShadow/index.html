@@ -25,6 +25,68 @@
             color: #d4af37;
         }
 
+        /* Navigation (hamburger) */
+        .nav-toggle {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #d4af37, #8c6d31);
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .nav-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6); }
+        .nav-toggle .bar {
+            width: 20px;
+            height: 2px;
+            background: #121212;
+            display: block;
+            position: relative;
+        }
+        .nav-toggle .bar:before,
+        .nav-toggle .bar:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 20px;
+            height: 2px;
+            background: #121212;
+        }
+        .nav-toggle .bar:before { top: -6px; }
+        .nav-toggle .bar:after { top: 6px; }
+
+        .nav-menu {
+            position: fixed;
+            top: 70px;
+            left: 18px;
+            background: #1e1e1e;
+            border: 1px solid #8c6d31;
+            border-radius: 8px;
+            padding: 10px 0;
+            min-width: 200px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+            display: none;
+            z-index: 999;
+        }
+        .nav-menu.active { display: block; }
+        .nav-menu a {
+            display: block;
+            padding: 12px 18px;
+            color: #e0e0e0;
+            text-decoration: none;
+            text-align: left;
+            font-weight: bold;
+            border-left: 4px solid transparent;
+        }
+        .nav-menu a:hover { background: rgba(212,175,55,0.06); border-left-color: #d4af37; }
+
         /* Back to Map Button */
         .back-button {
             margin-bottom: 20px;
@@ -185,10 +247,23 @@
                 padding: 10px 20px;
                 font-size: 14px;
             }
+
+            .nav-menu { left: 12px; top: 68px; min-width: 160px; }
+            .nav-toggle { top: 12px; left: 12px; }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation (hamburger) -->
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+        <span class="bar"></span>
+    </button>
+    <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
+        <a href="https://JDCaldwellAuthor.com/About">About</a>
+        <a href="https://JDCaldwellAuthor.com/PreludetoShadow">Prelude to Shadow</a>
+        <a href="https://JDCaldwellAuthor.com">Home</a>
+    </nav>
+
     <!-- Back to Map Button -->
     <div class="back-button">
         <a href="/">← Return to the Realm</a>
@@ -217,7 +292,7 @@
                     <div class="item-description">
                         <p>Son of a renowned landowner. He has never left the region surrounding Fidelium. His greatest passion is working the soil he will one day inherit.</p>
 
-                        <p>He is down to earth, though his manner of speech tolerates little nonsense and pursues the truth relentlessly. Because of his candor, swift action must often follow his words.</p>
+                        <p>He is down to earth, though his manner of speech tolerates little nonsense and pursues the truth relentlessly. Because of his candor, swift action must often follow his word[...]</p>
 
                         <p>Recent rumors have made it even to his ears. Someone has to do something about it. "Do I need to be that someone?"</p>
                     </div>
@@ -232,7 +307,7 @@
                     <div class="item-description">
                         <p>Daughter of the Prefect of Fidelium, her chief duty is that of messenger of her father.</p>
 
-                        <p>She excels as a diplomat and has expansive knowledge of Ionia's history and geography. Some have remarked that her intelligence gathering abilities are unmatched, except by that of her mother.</p>
+                        <p>She excels as a diplomat and has expansive knowledge of Ionia's history and geography. Some have remarked that her intelligence gathering abilities are unmatched, except by [...]</p>
 
                         <p>Occasionally she wonders, "What else is meant for me in this world?" Then picks up her lyre before she arrives at an answer.</p>
                     </div>
@@ -266,7 +341,7 @@
                         <img src="Founders.jpg" alt="The Founders of Ionia">
                     </div>
                     <div class="item-description">
-                        A king and queen come over from beyond the mountains.  No one knows the reason for their journey.  It is they, upon finding Ionia, who found the nation and its three great cities.
+                        A king and queen come over from beyond the mountains.  No one knows the reason for their journey.  It is they, upon finding Ionia, who found the nation and its three great citi[...]                    
                     </div>
                 </div>
 
@@ -290,7 +365,7 @@
                         <img src="Mountains.jpg" alt="The Phrygian Mountains">
                     </div>
                     <div class="item-description">
-                        A rocky, moutainous region.  Tales of a lost people and the ancient ruins of a civilization are passed down to this day.  The king and queen who founded Ionia passed through here 500 years ago.
+                        A rocky, moutainous region.  Tales of a lost people and the ancient ruins of a civilization are passed down to this day.  The king and queen who founded Ionia passed through he[...]                    
                     </div>
                 </div>
             </div>
@@ -342,6 +417,44 @@
             // Toggle current section
             section.classList.toggle('active');
         }
+
+        // Navigation toggle logic
+        (function() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            function openNav() {
+                navMenu.classList.add('active');
+                navToggle.setAttribute('aria-expanded', 'true');
+                navMenu.setAttribute('aria-hidden', 'false');
+            }
+            function closeNav() {
+                navMenu.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navMenu.setAttribute('aria-hidden', 'true');
+            }
+
+            navToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (navMenu.classList.contains('active')) {
+                    closeNav();
+                } else {
+                    openNav();
+                }
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                    closeNav();
+                }
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeNav();
+            });
+        })();
     </script>
 </body>
 </html>
