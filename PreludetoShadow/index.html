@@ -27,7 +27,7 @@
 
         /* Navigation (hamburger) */
         .nav-toggle {
-            position: absolute;
+            position: fixed;
             top: 18px;
             left: 18px;
             width: 44px;
@@ -63,9 +63,9 @@
         .nav-toggle .bar:after { top: 6px; }
 
         .nav-menu {
-            position: absolute;
+            position: fixed;
             top: 70px;
-            right: 18px;
+            left: 18px;
             background: #1e1e1e;
             border: 1px solid #8c6d31;
             border-radius: 8px;
@@ -250,23 +250,21 @@
                 font-size: 14px;
             }
 
-            .nav-menu { right: 12px; top: 68px; min-width: 160px; }
-            .nav-toggle { top: 12px; right: 12px; }
+            .nav-menu { left: 12px; top: 68px; min-width: 160px; }
+            .nav-toggle { top: 12px; left: 12px; }
         }
     </style>
 </head>
 <body>
-    <div class="prelude-container">
-        <!-- Navigation (hamburger) -->
-        <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
-            <span class="bar"></span>
-        </button>
-        <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
-            <a href="/About/">About</a>
-            <a href="/PreludetoShadow/">Prelude to Shadow</a>
-            <a href="/">Home</a>
-        </nav>
-    </div>
+    <!-- Navigation (hamburger) -->
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+        <span class="bar"></span>
+    </button>
+    <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
+        <a href="/About/">About</a>
+        <a href="/PreludetoShadow/">Prelude to Shadow</a>
+        <a href="/">Home</a>
+    </nav>
 
     <!-- Back to Map Button -->
     <div class="back-button">
