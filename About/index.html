@@ -15,10 +15,10 @@
       margin: 0;
     }
     h1 { color: #d4af37; margin-bottom: 10px; }
-    .container { position: relative; max-width: 900px; margin: 40px auto; padding: 0 15px; }
+    .container { max-width: 900px; margin: 40px auto; padding: 0 15px; }
     /* Navigation (hamburger) */
     .nav-toggle {
-      position: absolute;
+      position: fixed;
       top: 18px;
       left: 18px;
       width: 44px;
@@ -33,7 +33,7 @@
     .nav-toggle .bar:before, .nav-toggle .bar:after { content:""; position:absolute; left:0; width:20px; height:2px; background:#121212; }
     .nav-toggle .bar:before { top:-6px; } .nav-toggle .bar:after { top:6px; }
     .nav-menu {
-      position: absolute; top: 70px; left: 18px;
+      position: fixed; top: 70px; left: 18px;
       background:#1e1e1e; border:1px solid #8c6d31; border-radius:8px;
       padding:10px 0; min-width:200px; box-shadow:0 8px 30px rgba(0,0,0,0.6);
       display:none; z-index:999;
@@ -64,17 +64,17 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Navigation (hamburger) -->
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
-      <span class="bar"></span>
-    </button>
-    <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
-      <a href="https://JDCaldwellAuthor.com/About">About</a>
-      <a href="https://JDCaldwellAuthor.com/PreludetoShadow">Prelude to Shadow</a>
-      <a href="https://JDCaldwellAuthor.com">Home</a>
-    </nav>
+  <!-- Navigation (hamburger) -->
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+    <span class="bar"></span>
+  </button>
+  <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
+    <a href="https://JDCaldwellAuthor.com/About">About</a>
+    <a href="https://JDCaldwellAuthor.com/PreludetoShadow">Prelude to Shadow</a>
+    <a href="https://JDCaldwellAuthor.com">Home</a>
+  </nav>
 
+  <div class="container">
     <h1>About</h1>
 
     <div class="author-card" role="region" aria-label="About the author">
@@ -84,10 +84,11 @@
 
       <div class="author-bio">
         <p><strong>[Author Name]</strong></p>
-        <p>Place your author bio here. This area is a place to describe the author — background, influences, and any links or contact information you want shown. Replace this placeholder text with your own bio.</p>
+        <p>Place your author bio here. This area is a place to describe the author — background, influences, and any links or contact information you want shown. Replace this placeholder text with your final copy.</p>
         <p>You can include multiple paragraphs, links, or simple markup. If you want me to populate this with specific biographical text, paste it here and I'll update the file before committing.</p>
       </div>
     </div>
+
   </div>
 
   <script>
