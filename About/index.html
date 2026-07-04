@@ -18,7 +18,7 @@
     .container { position: relative; max-width: 900px; margin: 40px auto; padding: 0 15px; }
     /* Navigation (hamburger) */
     .nav-toggle {
-      position: fixed;
+      position: absolute;
       top: 18px;
       left: 18px;
       width: 44px;
@@ -33,7 +33,7 @@
     .nav-toggle .bar:before, .nav-toggle .bar:after { content:""; position:absolute; left:0; width:20px; height:2px; background:#121212; }
     .nav-toggle .bar:before { top:-6px; } .nav-toggle .bar:after { top:6px; }
     .nav-menu {
-      position: fixed; top: 70px; left: 18px;
+      position: absolute; top: 70px; left: 18px;
       background:#1e1e1e; border:1px solid #8c6d31; border-radius:8px;
       padding:10px 0; min-width:200px; box-shadow:0 8px 30px rgba(0,0,0,0.6);
       display:none; z-index:999;
