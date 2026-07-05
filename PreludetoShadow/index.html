@@ -25,110 +25,43 @@
             color: #d4af37;
         }
 
-/* Navigation (sword) */        
-        .nav-toggle {            
-            position: fixed;
-            top: 18px;
-            left: 18px;
+        /* Navigation (hamburger) */
+        .nav-toggle {
+            position: absolute;
+            top: 12px;
+            left: 12px;
             width: 44px;
-            height: 80px;
-            background: transparent;
-            border: none;
+            height: 44px;
+            background: linear-gradient(135deg, #d4af37, #8c6d31);
+            border: 2px solid #d4af37;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 1000;
-            padding: 0;
-        }        
-        /* Sword container - rotated 90 degrees clockwise */
-        .nav-toggle .sword-container {
-            position: relative;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .nav-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6); }
+        .nav-toggle .bar {
             width: 20px;
-            height: 80px;
-            transform: rotate(90deg);
+            height: 2px;
+            background: #121212;
+            display: block;
+            position: relative;
         }
-        
-        /* Sword blade with tapered tip */
-        .nav-toggle .blade {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            width: 10.5px;
-            height: 122.5px;
-            background: linear-gradient(to bottom, #c0c0c0, #a9a9a9);
-            box-shadow: inset -1px 0 0 rgba(0,0,0,0.3);
-            clip-path: polygon(0 0, 100% 0, 50% 85%, 50% 100%, 0 100%);
-        }
-        
-        /* Guard (horizontal gold bar) */
-        .nav-toggle .guard {
-            position: absolute;
-            left: 50%;
-            top: 122.5px;
-            transform: translateX(-50%);
-            width: 36px;
-            height: 4px;
-            background: linear-gradient(to bottom, #ffd700, #d4af37);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        /* Leather grip */
-        .nav-toggle .grip {
-            position: absolute;
-            left: 50%;
-            top: 126.5px;
-            transform: translateX(-50%);
-            width: 5px;
-            height: 24px;
-            background: linear-gradient(90deg, #8b7355, #a0826d, #8b7355);
-            border-radius: 2px;
-            box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), inset 0 -1px 2px rgba(255,255,255,0.1);
-        }
-        
-        /* Grip texture lines */
-        .nav-toggle .grip::before {
+        .nav-toggle .bar:before,
+        .nav-toggle .bar:after {
             content: '';
             position: absolute;
-            top: 0;
             left: 0;
-            right: 0;
-            height: 100%;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 1px,
-                rgba(0,0,0,0.2) 1px,
-                rgba(0,0,0,0.2) 2px
-            );
-            border-radius: 2px;
+            width: 20px;
+            height: 2px;
+            background: #121212;
         }
-        
-        /* Pommel (small gold sphere at end of grip) */
-        .nav-toggle .pommel {
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 7px;
-            height: 7px;
-            background: radial-gradient(circle at 30% 30%, #ffed4e, #d4af37, #8c6d31);
-            border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .nav-toggle:hover .blade {
-            filter: brightness(1.1);
-        }
-        
-        .nav-toggle:hover .guard,
-        .nav-toggle:hover .pommel {
-            filter: brightness(1.15);
-        }
-        
-        .nav-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6); }
-        
+        .nav-toggle .bar:before { top: -6px; }
+        .nav-toggle .bar:after { top: 6px; }
+
         .nav-menu {
             position: fixed;
             top: 70px;
@@ -323,21 +256,16 @@
     </style>
 </head>
 <body>
-    <!-- Navigation (sword) -->
-    <button class=\"nav-toggle\" id=\"navToggle\" aria-label=\"Open navigation\" aria-expanded=\"false\" aria-controls=\"navMenu\">
-        <div class=\"sword-container\">
-            <div class=\"blade\"></div>
-            <div class=\"guard\"></div>
-            <div class=\"grip\"></div>
-            <div class=\"pommel\"></div>
-        </div>
+    <!-- Navigation (hamburger) -->
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+        <span class="bar"></span>
     </button>
-    <nav class=\"nav-menu\" id=\"navMenu\" role=\"navigation\" aria-hidden=\"true\">
+    <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
         <a href="/About/">About</a>
         <a href="/PreludetoShadow/">Prelude to Shadow</a>
         <a href="/">Home</a>
     </nav>
-    
+
     <!-- Back to Map Button -->
     <div class="back-button">
         <a href="/">← Return to the Realm</a>
