@@ -18,18 +18,17 @@
             color: #d4af37; /* Metallic Gold */
             margin-bottom: 5px;
         }
-        h2 {
+        h2, h3 {
             color: #d4af37;
         }
-        h3 {
-            color: #d4af37;
-        }
-        /* Navigation (sword button) */        
+
+        /* ==========================================================================
+           NAVIGATION (SWORD BUTTON & DROPDOWN)
+           ========================================================================== */        
         .nav-toggle {            
             position: fixed;
             top: 18px;
             left: 18px;
-            /* Box size adjusted to fit the rotated 157.5px sword nicely */
             width: 80px; 
             height: 80px;
             background: transparent;
@@ -40,21 +39,22 @@
             cursor: pointer;
             z-index: 1000;
             padding: 0;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 50%;
+            /* Fixed: Uses transition filters/shadows instead of overriding transform */
+            transition: filter 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
         }        
 
         /* Sword container - holds full 157.5px length */
         .nav-toggle .sword-container {
             position: relative;
-            width: 36px; /* Matches guard width */
-            height: 157.5px; /* Total length of all elements combined */
-            /* Default: Points to the left */
-            transform: rotate(90deg); 
+            width: 36px; 
+            height: 157.5px; 
+            transform: rotate(90deg); /* Facing left by default */
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform-origin: center center;
         }
         
-        /* FIX: Pointy blade tip (tapers at the top 15%) */
+        /* Blade with sharp tip shape */
         .nav-toggle .blade {
             position: absolute;
             left: 50%;
@@ -79,7 +79,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
-        /* Leather grip */
+        /* Leather grip handle */
         .nav-toggle .grip {
             position: absolute;
             left: 50%;
@@ -110,11 +110,11 @@
             border-radius: 2px;
         }
         
-        /* Pommel (small gold sphere at end of grip) */
+        /* Pommel sphere */
         .nav-toggle .pommel {
             position: absolute;
             left: 50%;
-            top: 150.5px; /* Positioned directly at the bottom of the grip */
+            top: 150.5px; 
             transform: translateX(-50%);
             width: 7px;
             height: 7px;
@@ -123,31 +123,24 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
-        /* Hover interactions */
-        .nav-toggle:hover .blade {
-            filter: brightness(1.1);
-        }
-        
-        .nav-toggle:hover .guard,
-        .nav-toggle:hover .pommel {
-            filter: brightness(1.15);
-        }
-        
+        /* Interactive Hover Ring Styles matching your image */
         .nav-toggle:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3); 
-            border-radius: 50%;
+            background-color: rgba(30, 30, 30, 0.6);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.45), inset 0 0 0 1px rgba(212, 175, 55, 0.6); 
         }
+
+        .nav-toggle:hover .blade { filter: brightness(1.15); }
+        .nav-toggle:hover .guard, .nav-toggle:hover .pommel { filter: brightness(1.2); }
         
-        /* ANIMATION: Slashes down to point forward/downward when menu opens */
+        /* Animation: Rotates to face directly down/forward when clicked */
         .nav-toggle.open .sword-container {
             transform: rotate(180deg);
         }
 
-        /* Menu Panel styling */
+        /* Menu Panel Dropdown */
         .nav-menu {
             position: fixed;
-            top: 90px; /* Pushed down slightly to clear the larger button area */
+            top: 96px; 
             left: 18px;
             background: #1e1e1e;
             border: 1px solid #8c6d31;
@@ -178,7 +171,9 @@
             border-left-color: #d4af37; 
         }
 
-        /* Back to Map Button */
+        /* ==========================================================================
+           MAIN CONTENT & CORE STYLES
+           ========================================================================== */        
         .back-button {
             margin-top: 96px;
             margin-bottom: 20px;
@@ -205,7 +200,6 @@
             transform: translateY(-2px);
         }
 
-        /* Prelude to Shadow Section */
         .prelude-container {
             position: relative;
             max-width: 1000px;
@@ -213,7 +207,6 @@
             padding: 0 15px;
         }
 
-        /* Expandable Section Buttons */
         .section-buttons {
             display: flex;
             justify-content: center;
@@ -243,7 +236,6 @@
             transform: translateY(-2px);
         }
 
-        /* Expandable Content Sections */
         .section-content {
             display: none;
             background: #1e1e1e;
@@ -258,91 +250,11 @@
             display: block;
         }
 
-        /* Items Grid */
         .items-grid {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .item {
-            flex: 0 1 280px;
-            background: #121212;
-            border: 1px solid #8c6d31;
-            border-radius: 6px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .item h4 {
-            color: #d4af37;
-            margin-top: 0;
-            font-size: 18px;
-        }
-
-        .item-image {
-            width: 100%;
-            height: 200px;
-            background: #2a2a2a;
-            border: 1px dashed #8c6d31;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #8c6d31;
-            font-size: 12px;
-        }
-
-        .item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        .item-description {
-            color: #e0e0e0;
-            font-size: 14px;
-            line-height: 1.6;
-            text-align: left;
-        }
-
-        .item-description p {
-            margin-bottom: 1em;
-        }
-
-        /* Language Items (2 per row) */
-        .items-grid.languages {
-            gap: 30px;
-        }
-
-        .items-grid.languages .item {
-            flex: 0 1 350px;
-        }
-
-        @media (max-width: 768px) {
-            .items-grid {
-                gap: 20px;
-            }
-
-            .item {
-                flex: 0 1 100%;
-            }
-
-            .section-buttons {
-                gap: 10px;
-            }
-
-            .section-btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
-            .nav-menu { left: 12px; top: 68px; min-width: 160px; }
-            .nav-toggle { position: sticky; top: 12px; left: 12px; }
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
     </style>
 </head>
