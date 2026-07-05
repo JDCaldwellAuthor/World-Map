@@ -259,213 +259,54 @@
     </style>
 </head>
 <body>
-    <!-- Navigation (sword) -->
-    <button class=\"nav-toggle\" id=\"navToggle\" aria-label=\"Open navigation\" aria-expanded=\"false\" aria-controls=\"navMenu\">
-        <div class=\"sword-container\">
-            <div class=\"blade\"></div>
-            <div class=\"guard\"></div>
-            <div class=\"grip\"></div>
-            <div class=\"pommel\"></div>
+
+    <!-- INTERACTIVE SWORD NAVBAR BUTTON -->
+    <button class="nav-toggle" id="menuToggle" aria-label="Toggle Navigation" aria-expanded="false">
+        <div class="sword-container">
+            <div class="blade"></div>
+            <div class="guard"></div>
+            <div class="grip"></div>
+            <div class="pommel"></div>
         </div>
     </button>
-    <nav class=\"nav-menu\" id=\"navMenu\" role=\"navigation\" aria-hidden=\"true\">
-        <a href=\"/About/\">About</a>
-        <a href=\"/PreludetoShadow/\">Prelude to Shadow</a>
-        <a href=\"/\">Home</a>
+
+    <!-- NAVIGATION DROPDOWN LINKS -->
+    <nav class="nav-menu" id="navMenu">
+        <a href="#home">Home</a>
+        <a href="#armory">Armory</a>
+        <a href="#quests">Quests</a>
+        <a href="#lore">Lore Log</a>
     </nav>
-    <!-- Back to Map Button -->
+
+    <!-- MAIN BODY SECTION -->
     <div class="back-button">
-        <a href="/">← Return to the Realm</a>
+        <a href="#">Return to World Map</a>
     </div>
 
     <div class="prelude-container">
         <h1>Prelude to Shadow</h1>
+        <p>Welcome to the historical archives of the realm. Explore your inventory and story progress below.</p>
         
-        <!-- Section Buttons -->
         <div class="section-buttons">
-            <button class="section-btn" onclick="toggleSection('characters')">Characters</button>
-            <button class="section-btn" onclick="toggleSection('lore')">Lore</button>
-            <button class="section-btn" onclick="toggleSection('languages')">Languages</button>
+            <button class="section-btn" onclick="toggleSection('inventory')">View Inventory</button>
+            <button class="section-btn" onclick="toggleSection('quests')">Current Quests</button>
         </div>
 
-        <!-- Characters Section -->
-        <div id="characters" class="section-content">
-            <h3>Characters</h3>
+        <div id="inventory" class="section-content active">
+            <h2>Your Inventory</h2>
             <div class="items-grid">
-                <!-- Michael Shophaet -->
-                <div class="item">
-                    <h4>Michael Shophaet</h4>
-                    <div class="item-image">
-                        <img src="Michael.jpg" alt="Michael Shophaet">
-                    </div>
-                    <div class="item-description">
-                        <p>Son of a renowned landowner. He has never left the region surrounding Fidelium. His greatest passion is working the soil he will one day inherit.</p>
-
-                        <p>He is down to earth, though his manner of speech tolerates little nonsense and pursues the truth relentlessly. 
-                             Because of his candor, swift action must often follow his words. </p>
-
-                        <p>Recent rumors have made it even to his ears. Someone has to do something about it. "Do I need to be that someone?"</p>
-                    </div>
-                </div>
-
-                <!-- Kaila Keruah -->
-                <div class="item">
-                    <h4>Kaila Keruah</h4>
-                    <div class="item-image">
-                        <img src="Kaila.jpg" alt="Kaila Keruah">
-                    </div>
-                    <div class="item-description">
-                        <p>Daughter of the Prefect of Fidelium, her chief duty is that of messenger of her father.</p> 
-
-                        <p>She excels as a diplomat and has expansive knowledge of Ionia's history and geography. Some have remarked that her intelligence gathering 
-                            abilities are unmatched, except by that of her mother.</p>
-
-                        <p>Occasionally she wonders, "What else is meant for me in this world?" Then picks up her lyre before she arrives at an answer.</p>
-                    </div>
-                </div>
-
-                <!-- Jaakob Keruah -->
-                <div class="item">
-                    <h4>Jaakob Keruah</h4>
-                    <div class="item-image">
-                        <img src="Jaakob.jpg" alt="Jaakob Keruah">
-                    </div>
-                    <div class="item-description">
-                        <p>Son of the Prefect of Fidelium. He trained for seven years at the Police Academy in Sperata.</p>
-
-                        <p>He is kind-natured and contemplative, but his training has set him on a different path.</p>
-
-                        <p>Some burning, aching question nags at the back of his mind. "That part of me that I locked away...why has it begun to resurface now?"</p>
-                    </div>
-                </div>
+                <p>No magical items found in your pack yet.</p>
             </div>
         </div>
 
-        <!-- Lore Section -->
-        <div id="lore" class="section-content">
-            <h3>Lore</h3>
-            <div class="items-grid">
-                <!-- The Founders of Ionia -->
-                <div class="item">
-                    <h4>The Founders of Ionia</h4>
-                    <div class="item-image">
-                        <img src="Founders.jpg" alt="The Founders of Ionia">
-                    </div>
-                    <div class="item-description">
-                        A king and queen come over from beyond the mountains.  No one knows the reason for their journey.  It is they, upon finding Ionia, who found the nation and its three great[...]
-                    </div>
-                </div>
-
-                <!-- The Forest of Doria -->
-                <div class="item">
-                    <h4>The Forest of Doria</h4>
-                    <div class="item-image">
-                        <img src="Forest.jpg" alt="The Forest of Doria">
-                    </div>
-                    <div class="item-description">
-                        <p>A dark wood.  In its heart, the trees grow unfathomably large.  Dangerous creatures lurk there, and whispers of something...else.</p>
-
-                        <p>An expedition entered the wood nearly 100 years ago.  They were never heard from again.</p>
-                    </div>
-                </div>
-
-                <!-- The Phrygian Mountains -->
-                <div class="item">
-                    <h4>The Phrygian Mountains</h4>
-                    <div class="item-image">
-                        <img src="Mountains.jpg" alt="The Phrygian Mountains">
-                    </div>
-                    <div class="item-description">
-                        A rocky, moutainous region.  Tales of a lost people and the ancient ruins of a civilization are passed down to this day.  The king and queen who founded Ionia passed throu[...]
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Languages Section -->
-        <div id="languages" class="section-content">
-            <h3>Languages</h3>
-            <div class="items-grid languages">
-                <!-- Phrygian -->
-                <div class="item">
-                    <h4>Phrygian</h4>
-                    <div class="item-image">
-                        <img src="" alt="Phrygian">
-                        <span>Add language image</span>
-                    </div>
-                    <div class="item-description">
-                        A tonal, ergative-absolutive language.  The speech sounds like song, requiring near perfect pitch to speak.  There is no passive tense, and imperatives are...frowned upon.
-                    </div>
-                </div>
-
-                <!-- Locrian -->
-                <div class="item">
-                    <h4>Locrian</h4>
-                    <div class="item-image">
-                        <img src="" alt="Locrian">
-                        <span>Add language image</span>
-                    </div>
-                    <div class="item-description">
-                        Only fragmentary references remain.  Nobody recalls how or why the people known as "Locrians" disappeared from history.
-                    </div>
-                </div>
-            </div>
+        <div id="quests" class="section-content">
+            <h2>Active Quests</h2>
+            <p>⚔️ Investigate the strange anomalies rising along the southern borders.</p>
         </div>
     </div>
 
+    <!-- CORE INTERACTION JAVASCRIPT -->
     <script>
-        // Toggle section visibility
-        function toggleSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            
-            // Close all other sections
-            document.querySelectorAll('.section-content').forEach(content => {
-                if (content.id !== sectionId) {
-                    content.classList.remove('active');
-                }
-            });
 
-            // Toggle current section
-            section.classList.toggle('active');
-        }
-
-        // Navigation toggle logic
-        (function() {
-            const navToggle = document.getElementById('navToggle');
-            const navMenu = document.getElementById('navMenu');
-
-            function openNav() {
-                navMenu.classList.add('active');
-                navToggle.setAttribute('aria-expanded', 'true');
-                navMenu.setAttribute('aria-hidden', 'false');
-            }
-            function closeNav() {
-                navMenu.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', 'false');
-                navMenu.setAttribute('aria-hidden', 'true');
-            }
-
-            navToggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                if (navMenu.classList.contains('active')) {
-                    closeNav();
-                } else {
-                    openNav();
-                }
-            });
-
-            // Close when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-                    closeNav();
-                }
-            });
-
-            // Close on Escape
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') closeNav();
-            });
-        })();
-    </script>
 </body>
 </html>
