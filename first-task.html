@@ -4,100 +4,217 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First Task</title>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="135b7937-b7d0-424c-8c2d-8b0a59e43490"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            padding: 20px;
             margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 90%;
         }
         h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
+            color: #d4af37; /* Metallic Gold */
+            margin-bottom: 20px;
+        }
+        /* Navigation (hamburger) */
+        .nav-toggle {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #d4af37, #8c6d31);
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .nav-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+        .nav-toggle .bar {
+            width: 20px;
+            height: 2px;
+            background: #121212;
+            display: block;
+            position: relative;
+        }
+        .nav-toggle .bar:before,
+        .nav-toggle .bar:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 20px;
+            height: 2px;
+            background: #121212;
+        }
+        .nav-toggle .bar:before { top: -6px; }
+        .nav-toggle .bar:after { top: 6px; }
+
+        .nav-menu {
+            position: fixed;
+            top: 70px;
+            left: 18px;
+            background: #1e1e1e;
+            border: 1px solid #8c6d31;
+            border-radius: 8px;
+            padding: 10px 0;
+            min-width: 200px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+            display: none;
+            z-index: 999;
+        }
+        .nav-menu.active { display: block; }
+        .nav-menu a {
+            display: block;
+            padding: 12px 18px;
+            color: #e0e0e0;
+            text-decoration: none;
+            text-align: left;
+            font-weight: bold;
+            border-left: 4px solid transparent;
+        }
+        .nav-menu a:hover {
+            background: rgba(212, 175, 55, 0.06);
+            border-left-color: #d4af37;
+        }
+
+        /* Container */
+        .container {
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid #8c6d31;
+            max-width: 700px;
+            width: 90%;
+            margin: 80px auto 40px;
         }
         .question {
             font-size: 18px;
-            color: #555;
-            margin-bottom: 25px;
+            color: #e0e0e0;
+            margin-bottom: 30px;
             line-height: 1.6;
         }
         .input-group {
             margin-bottom: 20px;
             display: flex;
             gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         input[type="text"] {
             flex: 1;
-            padding: 10px;
+            min-width: 200px;
+            padding: 12px 15px;
             font-size: 16px;
-            border: 2px solid #667eea;
-            border-radius: 5px;
+            border: 2px solid #8c6d31;
+            border-radius: 6px;
             box-sizing: border-box;
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Georgia', serif;
         }
         input[type="text"]:focus {
             outline: none;
-            border-color: #764ba2;
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
         button {
-            padding: 10px 20px;
+            padding: 12px 30px;
             font-size: 16px;
-            background-color: #667eea;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            background: linear-gradient(135deg, #d4af37, #8c6d31);
+            color: #121212;
+            border: 2px solid #d4af37;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
         button:hover {
-            background-color: #764ba2;
+            background: linear-gradient(135deg, #8c6d31, #d4af37);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
         }
         .feedback {
-            margin-top: 20px;
+            margin-top: 25px;
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 6px;
             display: none;
             text-align: center;
             font-size: 16px;
+            border: 1px solid #8c6d31;
         }
         .feedback.correct {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background-color: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            border: 1px solid #d4af37;
             display: block;
         }
         .feedback.incorrect {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background-color: rgba(212, 175, 55, 0.05);
+            color: #e0e0e0;
+            border: 1px solid #8c6d31;
             display: block;
         }
         .button-group {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
         }
         .return-btn {
-            background-color: #28a745;
             padding: 12px 30px;
+            background: linear-gradient(135deg, #d4af37, #8c6d31);
+            color: #121212;
+            border: 2px solid #d4af37;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
             font-size: 16px;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            text-decoration: none;
+            display: inline-block;
         }
         .return-btn:hover {
-            background-color: #218838;
+            background: linear-gradient(135deg, #8c6d31, #d4af37);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 70px auto 20px;
+                padding: 25px;
+            }
+            .nav-menu { left: 12px; top: 68px; min-width: 160px; }
+            .nav-toggle { position: sticky; top: 12px; left: 12px; }
+            input[type="text"] {
+                min-width: 150px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation (hamburger) -->
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+        <span class="bar"></span>
+    </button>
+    <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
+        <a href="/About/">About</a>
+        <a href="/PreludetoShadow/">Prelude to Shadow</a>
+        <a href="/">Home</a>
+    </nav>
+
     <div class="container">
         <h1>First Task</h1>
         <div class="question">
@@ -112,7 +229,7 @@
         <div id="feedback" class="feedback"></div>
         
         <div class="button-group">
-            <button class="return-btn" onclick="returnToMap()">Return to the Realm</button>
+            <a href="/" class="return-btn">← Return to the Realm</a>
         </div>
     </div>
 
@@ -134,16 +251,50 @@
             }
         }
 
-        function returnToMap() {
-            window.location.href = 'index.html';
-        }
-
         // Allow Enter key to submit
         document.getElementById('answerInput').addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 submitAnswer();
             }
         });
+
+        // Navigation toggle logic
+        (function() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            function openNav() {
+                navMenu.classList.add('active');
+                navToggle.setAttribute('aria-expanded', 'true');
+                navMenu.setAttribute('aria-hidden', 'false');
+            }
+            function closeNav() {
+                navMenu.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navMenu.setAttribute('aria-hidden', 'true');
+            }
+
+            navToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (navMenu.classList.contains('active')) {
+                    closeNav();
+                } else {
+                    openNav();
+                }
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                    closeNav();
+                }
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeNav();
+            });
+        })();
     </script>
 </body>
 </html>
