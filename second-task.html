@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Second Task - What is Art?</title>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="135b7937-b7d0-424c-8c2d-8b0a59e43490"></script>
     <style>
@@ -34,6 +34,7 @@
             cursor: pointer;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            padding: 0;
         }
         .nav-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6); }
         .nav-toggle .bar {
@@ -200,10 +201,8 @@
 </head>
 <body>
     <!-- Navigation (hamburger) -->
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+        <span class="bar" aria-hidden="true"></span>
     </button>
     <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
         <a href="/About/">About</a>
