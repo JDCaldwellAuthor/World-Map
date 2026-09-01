@@ -39,24 +39,14 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
         }
+        /* Use three centered bars for the hamburger icon */
         .nav-toggle .bar {
             width: 20px;
             height: 2px;
             background: #121212;
             display: block;
-            position: relative;
         }
-        .nav-toggle .bar:before,
-        .nav-toggle .bar:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 20px;
-            height: 2px;
-            background: #121212;
-        }
-        .nav-toggle .bar:before { top: -6px; }
-        .nav-toggle .bar:after { top: 6px; }
+        .nav-toggle .bar + .bar { margin-top: 6px; }
 
         .nav-menu {
             position: fixed;
@@ -207,6 +197,8 @@
 <body>
     <!-- Navigation (hamburger) -->
     <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
         <span class="bar"></span>
     </button>
     <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
