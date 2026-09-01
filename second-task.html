@@ -35,18 +35,25 @@
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
-        .nav-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
-        }
-        /* Use three centered bars for the hamburger icon */
+        .nav-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6); }
         .nav-toggle .bar {
             width: 20px;
             height: 2px;
             background: #121212;
             display: block;
+            position: relative;
         }
-        .nav-toggle .bar + .bar { margin-top: 6px; }
+        .nav-toggle .bar:before,
+        .nav-toggle .bar:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 20px;
+            height: 2px;
+            background: #121212;
+        }
+        .nav-toggle .bar:before { top: -6px; }
+        .nav-toggle .bar:after { top: 6px; }
 
         .nav-menu {
             position: fixed;
@@ -71,10 +78,7 @@
             font-weight: bold;
             border-left: 4px solid transparent;
         }
-        .nav-menu a:hover {
-            background: rgba(212, 175, 55, 0.06);
-            border-left-color: #d4af37;
-        }
+        .nav-menu a:hover { background: rgba(212,175,55,0.06); border-left-color: #d4af37; }
 
         /* Container */
         .container {
