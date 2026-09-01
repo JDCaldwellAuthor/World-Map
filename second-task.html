@@ -186,6 +186,59 @@
             transform: translateY(-2px);
         }
 
+        /* ======================
+           Form: make each label/input full-width
+           ====================== */
+        form {
+            margin-top: 20px;
+            text-align: left; /* keep labels left-aligned inside the container */
+        }
+        form h2 {
+            color: #d4af37;
+            margin-bottom: 8px;
+        }
+        /* Make each label a full-width block so the input/textarea sits on its own line */
+        form label {
+            display: block;
+            width: 100%;
+            margin-bottom: 16px;
+            font-weight: bold;
+            color: #e0e0e0;
+            box-sizing: border-box;
+        }
+        /* Make the text input and textareas span the full label width */
+        form input[type="text"],
+        form textarea {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 14px;
+            font-size: 16px;
+            border: 2px solid #8c6d31;
+            border-radius: 6px;
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Georgia', serif;
+            margin-top: 8px;
+        }
+        form input[type="text"]:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+        }
+        form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        /* Ensure the small attribution text remains aligned and readable */
+        .splitforms-attribution {
+            margin-top: 12px;
+            font-size: 11px;
+            color: #888;
+            text-align: right;
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 70px auto 20px;
@@ -195,6 +248,10 @@
             .nav-toggle { position: sticky; top: 12px; left: 12px; }
             input[type="text"] {
                 min-width: 150px;
+            }
+            /* On small screens keep form full-width within the container */
+            form {
+                text-align: left;
             }
         }
     </style>
@@ -218,14 +275,31 @@
             encounters the same experience and emotion.
         </div>
         <form action="https://splitforms.com/api/submit" method="POST">
-  <input type="hidden" name="access_key" value="1cfc761f9c944548a16a83f1169b5a96">
-  <h2>What is Art?</h2>
-  <label>Alias:<input type="text" name="name" placeholder="Jane Doe" required></label>
-  <p><label>Does this definition of art make sense? Why or why not?<textarea name="essay" placeholder="If not, describe what art means to you." required></textarea></label></p>
-  <p><label>What are effective examples of art that provide resistance to tyrannical forces?<textarea name="message" placeholder="What made them so effective?" required></textarea></label></p>
-  <p><label>What examples of art are most inspiring to you?<textarea name="message_2" placeholder="This may be a painting, sculpture, piece of music, novel, etc..." required></textarea></label></p>
-  <p><button type="submit">Send</button></p>
-</form>
+            <input type="hidden" name="access_key" value="1cfc761f9c944548a16a83f1169b5a96">
+            <h2>What is Art?</h2>
+
+            <label>
+                Alias:
+                <input type="text" name="name" placeholder="Jane Doe" required>
+            </label>
+
+            <label>
+                Does this definition of art make sense? Why or why not?
+                <textarea name="essay" placeholder="If not, describe what art means to you." required></textarea>
+            </label>
+
+            <label>
+                What are effective examples of art that provide resistance to tyrannical forces?
+                <textarea name="message" placeholder="What made them so effective?" required></textarea>
+            </label>
+
+            <label>
+                What examples of art are most inspiring to you?
+                <textarea name="message_2" placeholder="This may be a painting, sculpture, piece of music, novel, etc..." required></textarea>
+            </label>
+
+            <p><button type="submit">Send</button></p>
+        </form>
 <p class="splitforms-attribution" style="margin-top:12px;font-size:11px;color:#888;text-align:right">
   Powered by <a href="https://splitforms.com" style="color:#888;text-decoration:none" target="_blank" rel="sponsored noopener">splitforms</a>
 </p>
