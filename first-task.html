@@ -34,11 +34,9 @@
             cursor: pointer;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            padding: 0;
         }
-        .nav-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
-        }
+        .nav-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6); }
         .nav-toggle .bar {
             width: 20px;
             height: 2px;
@@ -206,8 +204,8 @@
 </head>
 <body>
     <!-- Navigation (hamburger) -->
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
-        <span class="bar"></span>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+        <span class="bar" aria-hidden="true"></span>
     </button>
     <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
         <a href="/About/">About</a>
