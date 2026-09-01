@@ -34,9 +34,11 @@
             cursor: pointer;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            padding: 0;
         }
-        .nav-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6); }
+        .nav-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
         .nav-toggle .bar {
             width: 20px;
             height: 2px;
@@ -79,7 +81,10 @@
             font-weight: bold;
             border-left: 4px solid transparent;
         }
-        .nav-menu a:hover { background: rgba(212,175,55,0.06); border-left-color: #d4af37; }
+        .nav-menu a:hover {
+            background: rgba(212, 175, 55, 0.06);
+            border-left-color: #d4af37;
+        }
 
         /* Container */
         .container {
@@ -201,15 +206,14 @@
 </head>
 <body>
     <!-- Navigation (hamburger) -->
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
-        <span class="bar" aria-hidden="true"></span>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+        <span class="bar"></span>
     </button>
     <nav class="nav-menu" id="navMenu" role="navigation" aria-hidden="true">
         <a href="/About/">About</a>
         <a href="/PreludetoShadow/">Prelude to Shadow</a>
         <a href="/">Home</a>
     </nav>
-
 
     <div class="container">
         <h1>First Task</h1>
